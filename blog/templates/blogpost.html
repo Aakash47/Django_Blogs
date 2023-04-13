@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Blog Post{% endblock %}
+{% block body %}
+<style>
+    h2 {
+        color: black;
+    }
+    p {
+        color: black;
+    }
+</style>
+
+<div class="container py-4">
+    <img src="{{ post.image.url }}" class="d-block w-100" width="500" height="350" alt="...">
+</div>
+<div class="container">
+    <h2 class="featurette-heading py-4">{{ object.title }}</h2>
+    <small class="py-4">Author : {{ post.author }} | Date : {{ post.date_posted }}</small>
+    <p class="lead">{{ object.content|safe|linebreaks }}</p>
+</div>
+
+{% endblock body %}

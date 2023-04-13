@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Search{% endblock %}
+{% block body %}
+<style>
+    body {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        color: black;
+    }
+    #search {
+      margin-bottom: -30px;
+      margin-top: 30px;
+    }
+</style>
+<div class="container">
+<h5><p class="py-4" id="search">Search Results:</p></h5>
+{% for post in object_list %}
+    <div class="cointainer">
+      <hr class="featurette-divider mt-4">
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading py-4">{{ post.title }}</h2>
+          <p class="lead">{{ post.content|safe|truncatewords:100|linebreaks }}</p>
+          <a class="btn btn-secondary" href="{% url 'Blogpost' post.slug %}">read more...</a>
+          <!-- <p><a class="btn btn-secondary" href="{{ url_for_full_content }}" role="button">Read More &raquo;</a></p> -->
+          <hr>
+          <small class="py-4">Author : {{ post.author }} | Date : {{ post.date_posted }}</small>
+        </div>
+        <div class="col-md-5">
+          <img src="{{ post.image.url }}" class="d-block w-100" width="500" height="350" alt="...">
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+{% endblock body %}
+
+
+    {% comment %} <p>Search results:</p>
+<ul>
+    {% for post in object_list %}
+    <li>
+      {{ post.title }}
+    </li>
+    {% endfor %}
+</ul> {% endcomment %}
